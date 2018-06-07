@@ -12,7 +12,7 @@ odoo.define('pos_backend_partner.partner_pos', function (require) {
     function set_client(message)  {
         var data = message.data;
         var partner_info = {
-            'id': parseInt(data.id, 10),
+            'id': parseInt(data.partner_id, 10),
             'name': data.name
         };
         pos_instance.get('selectedOrder').set_client(partner_info);
@@ -20,7 +20,6 @@ odoo.define('pos_backend_partner.partner_pos', function (require) {
     }
 
     function open_backend(message) {
-        console.log('open backend partner');
         //lookup action_id
         action_url = action_url || session.rpc(
             '/web/action/load', { "action_id":"pos_backend_partner.action_select_partner_pos"})
