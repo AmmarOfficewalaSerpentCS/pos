@@ -106,7 +106,6 @@ odoo.define("pos_product_template.pos_product_template", function(require){
             // Hide the popup because all pop up are displayed at the
             // beginning by default
             this.select_variant_popup.hide();
-            console.log('enddddddddddddddd')
         },
     });
 
@@ -119,7 +118,6 @@ odoo.define("pos_product_template.pos_product_template", function(require){
         template:'SelectVariantPopupWidget',
 
         start: function(){
-            console.log('starttttttt111111ttttttttttt')
             var self = this;
             // Define Variant Widget
             this.variant_list_widget = new VariantListWidget(this,{});
@@ -136,7 +134,6 @@ odoo.define("pos_product_template.pos_product_template", function(require){
         },
 
         show: function(product_tmpl_id){
-            console.log('displayyyyyyyyyyyyyyyy')
             var self = this;
             var template = this.pos.db.template_by_id[product_tmpl_id];
 
@@ -175,7 +172,6 @@ odoo.define("pos_product_template.pos_product_template", function(require){
         template:'VariantListWidget',
 
         init: function(parent, options) {
-            console.log('run the methode')
             var self = this;
             this._super(parent, options);
             this.variant_list = [];
@@ -249,7 +245,6 @@ odoo.define("pos_product_template.pos_product_template", function(require){
 
         renderElement: function() {
             var self = this;
-            console.log('this.template')
             // changed code openerp.qweb to core.qweb
             var el_html  = core.qweb.render(this.template, {widget: this});
             var el_node = document.createElement('div');
@@ -279,7 +274,6 @@ odoo.define("pos_product_template.pos_product_template", function(require){
         template:'AttributeListWidget',
 
         init: function(parent, options) {
-            console.log('strtrt1111rtrt')
             var self = this;
             this.attribute_list = [];
             this.product_template = null;
@@ -325,7 +319,6 @@ odoo.define("pos_product_template.pos_product_template", function(require){
         },
 
         render_attribute: function(attribute){
-            console.log('1111111111render_attribute111111111111')
             var attribute_html = core.qweb.render('AttributeWidget',{
                     widget:  this,
                     attribute: attribute,
@@ -351,7 +344,6 @@ odoo.define("pos_product_template.pos_product_template", function(require){
         },
 
         render_value: function(value, variant_qty){
-            console.log('11111111111111render_value1111111111111')
             var value_html = QWeb.render('AttributeValueWidget',{
                     widget:  this,
                     value: value,
@@ -364,7 +356,6 @@ odoo.define("pos_product_template.pos_product_template", function(require){
         },
 
         renderElement: function() {
-            console.log('renderElementrenderElementrenderElement')
             var self = this;
             // changed code in el_html varibale to this.qweb to core.qweb
             var el_html  = core.qweb.render(this.template, {widget: this});
@@ -516,7 +507,6 @@ odoo.define("pos_product_template.pos_product_template", function(require){
             'product_variant_count',
             ],
         domain:  function(self){
-            console.log('domain')
             return [
                 ['sale_ok','=',true],
                 ['available_in_pos','=',true],
@@ -527,7 +517,6 @@ odoo.define("pos_product_template.pos_product_template", function(require){
                 display_default_code: false,
             };},
         loaded: function(self, templates){
-             console.log('templates',templates)
              self.db.add_templates(templates);
         },
     },
@@ -538,7 +527,6 @@ odoo.define("pos_product_template.pos_product_template", function(require){
             'value_ids',
         ],
         loaded: function(self, attributes){
-            console.log('attributes', attributes)
              self.db.add_product_attributes(attributes);
         },
     },
@@ -549,7 +537,6 @@ odoo.define("pos_product_template.pos_product_template", function(require){
             'attribute_id',
         ],
         loaded: function(self, values){
-            console.log('values', values)
              self.db.add_product_attribute_values(values);
         },
     });
